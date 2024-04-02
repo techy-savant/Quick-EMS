@@ -18,7 +18,7 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
             <th>Last Name</th>
             <th>Email</th>
             <th>Salary</th>
-            <th>Date</th>
+            <th>Start Date</th>
             <th colSpan={2} className="text-center">
               Actions
             </th>
