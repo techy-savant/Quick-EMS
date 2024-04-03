@@ -81,8 +81,10 @@ const Login = ({ setIsAuthenticated }) => {
 
   return (
     <div className="small-container">
+      <h1 className='logo' style={{marginBottom: '30px'}}>Quick-EMS</h1>
+
       <form onSubmit={handleLogin}>
-        <h1>Admin Login</h1>
+        <h3>Admin Login</h3>
         <label htmlFor="email">Email</label>
         <input
           id="email"

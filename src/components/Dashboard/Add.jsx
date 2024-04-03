@@ -57,8 +57,9 @@ const Add = ({ employees, setEmployees, setIsAdding, getEmployees }) => {
 
   return (
     <div className="small-container">
+       <h1 className='logo' style={{marginBottom: '30px'}}>Quick-EMS</h1>
       <form onSubmit={handleAdd}>
-        <h1>Add Employee</h1>
+        <h3>Add Employee</h3>
         <label htmlFor="firstName">First Name</label>
         <input
           id="firstName"

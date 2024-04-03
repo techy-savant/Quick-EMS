@@ -54,8 +54,9 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing, getEmpl
 
   return (
     <div className="small-container">
+       <h1 className='logo' style={{marginBottom: '30px'}}>Quick-EMS</h1>
       <form onSubmit={handleUpdate}>
-        <h1>Edit Employee</h1>
+        <h3>Edit Employee</h3>
         <label htmlFor="firstName">First Name</label>
         <input
           id="firstName"

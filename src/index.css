@@ -20,6 +20,10 @@
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+
+ @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
 html {
   line-height: 1.15;
   /* 1 */
@@ -43,13 +47,28 @@ main {
   display: block;
 }
 
+
+.header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+.logo{
+  font-family: "IBM Plex Sans", sans-serif;
+  font-weight: 500;
+  color: #0264ed;
+  
+}
+
 /**
  * Correct the font size and margin on `h1` elements within `section` and
  * `article` contexts in Chrome, Firefox, and Safari.
  */
 h1 {
   font-size: 2em;
-  margin: 0.67em 0;
 }
 
 /* Grouping content
@@ -404,7 +423,8 @@ h2,
 h3,
 h4,
 h5 {
-  margin: 1.5rem 0;
+  margin: 0.5rem 0;
+  text-align: center;
   font-weight: 600;
   font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica,
     Arial, sans-serif;
@@ -417,13 +437,13 @@ h2:not(:first-child),
 h3:not(:first-child),
 h4:not(:first-child),
 h5:not(:first-child) {
-  margin: 1.5rem 0;
+  margin: 0.5rem 0;
 }
 
 h1:not(:first-child),
 h2:not(:first-child),
 h3:not(:first-child) {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 
 h1 {
@@ -450,7 +470,7 @@ h5 {
   h1:not(:first-child),
   h2:not(:first-child),
   h3:not(:first-child) {
-    margin-top: 2.5rem;
+    margin-top: 0.5rem;
   }
   h1 {
     font-size: 2.25rem;
