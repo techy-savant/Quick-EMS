@@ -17,6 +17,7 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email</th>
+            <th>Role</th>
             <th>Salary</th>
             <th>Start Date</th>
             <th colSpan={2} className="text-center">
@@ -32,6 +33,7 @@ const Table = ({ employees, handleEdit, handleDelete }) => {
                 <td>{employee.firstName}</td>
                 <td>{employee.lastName}</td>
                 <td>{employee.email}</td>
+                <td>{employee.role}</td>
                 <td>{formatter.format(employee.salary)}</td>
                 <td>{employee.date} </td>
                 <td className="text-right">

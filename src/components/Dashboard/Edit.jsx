@@ -12,6 +12,8 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing, getEmpl
   const [email, setEmail] = useState(selectedEmployee.email);
   const [salary, setSalary] = useState(selectedEmployee.salary);
   const [date, setDate] = useState(selectedEmployee.date);
+  const [role, setRole] = useState(selectedEmployee.role);
+
 
   const handleUpdate = async (e) => {
     e.preventDefault();
@@ -30,6 +32,7 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing, getEmpl
       firstName,
       lastName,
       email,
+      role,
       salary,
       date,
     };
@@ -80,6 +83,14 @@ const Edit = ({ employees, selectedEmployee, setEmployees, setIsEditing, getEmpl
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="role">role</label>
+        <input
+          id="role"
+          type="text"
+          name="role"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
         />
         <label htmlFor="salary">Salary ($)</label>
         <input

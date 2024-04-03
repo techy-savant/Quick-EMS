@@ -10,6 +10,7 @@ const Add = ({ employees, setEmployees, setIsAdding, getEmployees }) => {
   const [email, setEmail] = useState("");
   const [salary, setSalary] = useState("");
   const [date, setDate] = useState("");
+  const [role, setRole] = useState("");
 
   const handleAdd = async (e) => {
     e.preventDefault();
@@ -27,6 +28,7 @@ const Add = ({ employees, setEmployees, setIsAdding, getEmployees }) => {
       firstName,
       lastName,
       email,
+      role,
       salary,
       date,
     };
@@ -83,6 +85,14 @@ const Add = ({ employees, setEmployees, setIsAdding, getEmployees }) => {
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+        />
+        <label htmlFor="role">Role</label>
+        <input
+          id="role"
+          type="text"
+          name="role"
+          value={role}
+          onChange={(e) => setRole(e.target.value)}
         />
         <label htmlFor="salary">Salary (₦)</label>
         <input
