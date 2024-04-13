@@ -3,17 +3,22 @@ import Swal from 'sweetalert2';
 
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from "firebase/auth";
 
+import {useNavigate} from 'react-router-dom'
+
+
 const Login = ({ setIsAuthenticated }) => {
 
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     const auth = getAuth();
 
-    if (document.activeElement.name === 'Login') {
+    if (document.activeElement.name === 'SignIn') {
       try {
         await signInWithEmailAndPassword(auth, email, password)
         Swal.fire({
@@ -27,7 +32,7 @@ const Login = ({ setIsAuthenticated }) => {
   
             Swal.fire({
               icon: 'success',
-              title: 'Successfully logged in!',
+              title: 'Successfully Signed in!',
               showConfirmButton: false,
               timer: 1500,
             });
@@ -51,30 +56,7 @@ const Login = ({ setIsAuthenticated }) => {
         });
       }
     } 
-    else if (document.activeElement.name === 'Register') {
-      try {
-        await createUserWithEmailAndPassword(auth, email, password)
-        Swal.fire({
-          timer: 1500,
-          showConfirmButton: false,
-          willOpen: () => {
-            Swal.showLoading();
-          },
-          willClose: () => {
-            setIsAuthenticated(true);
-  
-            Swal.fire({
-              icon: 'success',
-              title: 'Successfully registered and logged in!',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          },
-        });
-      } catch (error) {
-        console.log(error)
-      }
-    }
+    
 
     
   };
@@ -103,8 +85,8 @@ const Login = ({ setIsAuthenticated }) => {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <input style={{ marginTop: '12px' }} type="submit" value="Login" name="Login" />
-        <input style={{ marginTop: '12px', marginLeft: '12px', backgroundColor: 'black' }} type="submit" value="Register" name="Register" />
+        <input style={{ marginTop: '12px' }} type="submit" value="SignIn" name="SignIn" />
+        <input style={{ marginTop: '12px', marginLeft: '12px', backgroundColor: 'black' }} type="button" value="Register Admin »" name="Register" onClick={()=>{navigate('/register');}} />
       </form>
     </div>
   );
