@@ -9,20 +9,20 @@ import Edit from "./Edit";
 import { collection, getDocs, doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../config/firestore";
 
-
-
 const Dashboard = ({ setIsAuthenticated }) => {
   const [employees, setEmployees] = useState();
   const [selectedEmployee, setSelectedEmployee] = useState(null);
   const [isAdding, setIsAdding] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [searchedData, setSearchedData] = useState("");
 
   const getEmployees = async () => {
     const querySnapshot = await getDocs(collection(db, "employees"));
     const employees = querySnapshot.docs.map((doc) => ({
-      id: doc.id, ...doc.data()
+      id: doc.id,
+      ...doc.data(),
     }));
-   
+
     setEmployees(employees);
   };
 
@@ -68,6 +68,24 @@ const Dashboard = ({ setIsAuthenticated }) => {
     });
   };
 
+  const handleSearch = (e) => {
+    const searchValue = e.target.value.trim(); 
+    setSearchedData(searchValue);
+  
+    const filteredData = employees.filter(
+      (employee) =>
+        employee.firstName.toLowerCase().includes(searchValue.toLowerCase()) ||
+        employee.lastName.toLowerCase().includes(searchValue.toLowerCase())
+    );
+  
+    if (searchValue === "") { 
+      getEmployees();
+    } else {
+      setEmployees(filteredData);
+    }
+    
+  };
+
   return (
     <div className="container">
       {!isAdding && !isEditing && (
@@ -75,6 +93,13 @@ const Dashboard = ({ setIsAuthenticated }) => {
           <Header
             setIsAdding={setIsAdding}
             setIsAuthenticated={setIsAuthenticated}
+          />
+          <input
+            type="text"
+            placeholder="Search Employees..."
+            value={searchedData}
+            style={{ maxWidth: "300px", margin: "0 auto" }}
+            onChange={handleSearch}
           />
           <Table
             employees={employees}
@@ -88,7 +113,7 @@ const Dashboard = ({ setIsAuthenticated }) => {
           employees={employees}
           setEmployees={setEmployees}
           setIsAdding={setIsAdding}
-          getEmployees ={getEmployees}
+          getEmployees={getEmployees}
         />
       )}
       {isEditing && (
